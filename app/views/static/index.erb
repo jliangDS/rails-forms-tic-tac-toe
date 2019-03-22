@@ -1,0 +1,17 @@
+<div class="center game-board">
+  <div class="row">
+    <div class="square board-0">T</div><div class="square board-1">I</div><div class="square board-2">C</div>
+  </div>
+  <div class="row"> 
+    <div class="square board-3">T</div><div class="square board-4">A</div><div class="square board-5">C</div>
+  </div>
+  <div class="row"> 
+    <div class="square board-6">T</div><div class="square board-7">O</div><div class="square board-8">E</div>
+  </div>
+</div>
+
+<div class="center">
+  <%= button_to "PLAY GAME", new_game_path, :method => "get", :class => "button" %>
+  <br>
+  <%= button_to "MATCH HISTORY", games_path, :method => "get", :class => "button" %>
+</div>

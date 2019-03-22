@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.create
   end
-
+  
   def edit
     @game = Game.find(params[:id])
   end
@@ -23,6 +23,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:)
+    params.require(:game).permit!
   end
 end
