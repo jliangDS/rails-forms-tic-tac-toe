@@ -1,14 +1,23 @@
 class Game < ApplicationRecord
   has_many :turns
   @board = []
+  @is_single_player
 
-  def state
+  def is_single_player
+    @is_single_player
+  end
+
+  def is_single_player=(is_single_player)
+    @is_single_player = is_single_player
+  end
+
+  def board
     self.turns.each do |turn|
       update_board_with_turn(turn)
     end
   end
 
-  def state=(turn)
+  def board=(turn)
     update_board_with_turn(turn)
   end
 

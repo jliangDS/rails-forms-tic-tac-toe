@@ -8,7 +8,8 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.create
+    @game = Game.create(game_params(:is_single_player))
+    redirect_to game_play_path(@game)
   end
   
   def edit
@@ -17,12 +18,13 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update(game_params)
+    @game.update(game_params(:board))
+    redirect_to game_play_path(@game)
   end
 
   private
 
-  def game_params
-    params.require(:game).permit!
+  def game_params(*args)
+    params.require(:game).permit(*args)
   end
 end

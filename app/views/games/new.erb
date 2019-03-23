@@ -1,17 +1,12 @@
-<div class="center game-board">
-  <% (0...9).each do |i| %>
-    <% if i % 3 == 0 %>
-      <div class="row">
-        <div class="square board-<%= i %>"></div>
-        <div class="square board-<%= i+1 %>"></div>
-        <div class="square board-<%= i+2 %>"></div>
-      </div>
-    <% end %>
-  <% end %>
+<div class="center rules">
 </div>
-
+<br>
 <div class="center">
   <%= form_for(@game) do |f| %>
-    <%= f.submit 'Confirm Move', class: "button" %>
+    <%= f.hidden_field :is_single_player, value: true %>
+    <%= f.submit 'One Player', class: "button" %>
+  <% end %>
+  <%= form_for(@game) do |f| %>
+    <%= f.submit 'Two Players', class: "button" %>
   <% end %>
 </div>

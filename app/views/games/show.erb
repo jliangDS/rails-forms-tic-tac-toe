@@ -1,0 +1,17 @@
+<div class="center game-board">
+  <% (0...9).each do |i| %>
+    <% if i % 3 == 0 %>
+      <div class="row">
+        <div class="square board-<%= i %>"><%= @game.board[i] %></div>
+        <div class="square board-<%= i+1 %>"><%= @game.board[i+1] %></div>
+        <div class="square board-<%= i+2 %>"><%= @game.board[i+2] %></div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="center">
+  <%= form_for(@game) do |f| %>
+    <%= f.submit 'Confirm Move', class: "button" %>
+  <% end %>
+</div>
