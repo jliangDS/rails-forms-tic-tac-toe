@@ -1,9 +1,6 @@
 class Game < ApplicationRecord
   has_many :turns
 
-  def is_single_player
-  end
-
   def selected_board_index
   end
 

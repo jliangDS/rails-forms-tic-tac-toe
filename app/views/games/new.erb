@@ -3,7 +3,7 @@
 <br>
 <div class="center">
   <%= form_for(@game) do |f| %>
-    <%= f.hidden_field :is_single_player, value: true %>
+  <%= f.hidden_field :is_single_player, value: true %>
     <%= f.submit 'One Player', class: "button" %>
   <% end %>
   <%= form_for(@game) do |f| %>

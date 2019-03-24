@@ -1,17 +1,19 @@
 <div class="center game-board">
-  <% (0...9).each do |i| %>
-    <% if i % 3 == 0 %>
-      <div class="row">
-        <div class="square board-<%= i %>"><%= @game.board[i] %></div>
-        <div class="square board-<%= i+1 %>"><%= @game.board[i+1] %></div>
-        <div class="square board-<%= i+2 %>"><%= @game.board[i+2] %></div>
-      </div>
-    <% end %>
+  <% [0, 3, 6].each do |i| %>
+    <div class="row">
+      <% (0..2).each do |j| %>
+        <div class="square board-<%= i+j %>">
+          <% if @game.board[i+j] %>
+            <div class="mark <%= @game.board[i+j] %>">
+              <%= @game.board[i+j] %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
-<div class="center">
-  <%= form_for(@game) do |f| %>
-    <%= f.submit 'Confirm Move', class: "button" %>
-  <% end %>
-</div>
+<h1 class="center">
+  Winner: <span class="<%= @game.victor %>"><%= @game.victor %></span>
+</h1>
