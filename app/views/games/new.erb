@@ -15,7 +15,6 @@
   <%= f.hidden_field :is_single_player, value: true %>
     <%= f.submit 'Single Player', class: "button" %>
   <% end %>
-  <br>
   <%= form_for(@game) do |f| %>
       <%= f.hidden_field :is_single_player, value: false %>
     <%= f.submit 'Two Players', class: "button" %>
