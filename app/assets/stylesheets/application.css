@@ -17,6 +17,8 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5em;
+  color: white;
+  background-color: #17181c;
 }
 
 .center {
@@ -46,10 +48,11 @@ body {
 .game-board {
   width: 333px;
   height: 333px;
-  background-color: lightgrey;
+  background-color: rgb(41, 44, 58);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  margin-top: 2em;
   margin-bottom: 2em;
 }
 
@@ -65,7 +68,7 @@ body {
   line-height: 111px;
   width: 100%;
 
-  border-color: black;
+  border-color: lightslategray;
   border-style: solid;
 }
 
@@ -108,13 +111,13 @@ body {
 .minified {
   transform: scale(0.2);
   position: relative;
-  transform-origin: 50px -60px;
-  -moz-transform-origin: 50px -60px;
-  -webkit-transform-origin: 50px -60px;
+  transform-origin: 2em -5em;
+  -moz-transform-origin: 2em -5em;
+  -webkit-transform-origin: 2em -5em;
 }
 
 .mark {
-  font-size: 100px;
+  font-size: 4em;
 }
 
 .O {
