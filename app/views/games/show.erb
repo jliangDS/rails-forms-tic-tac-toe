@@ -4,7 +4,7 @@
       <% (0..2).each do |j| %>
         <div class="square board-<%= i+j %>">
           <% if @game.board[i+j] %>
-            <div class="mark <%= @game.board[i+j] %> <%= "win" if @game.win.split(' ').include?((i+j).to_s) %>">
+            <div class="mark <%= @game.board[i+j] %> <%= "win" if @game.win && @game.win.split(' ').include?((i+j).to_s) %>">
               <%= @game.board[i+j] %>
             </div>
           <% end %>
@@ -29,6 +29,30 @@
 
 <% end %>
 <br>
-  <div class="center">
-    <%= button_to "Back to Main Menu", :root, :method => "get", :class => "button" %>
-  </div>
+<div class="center">
+  <%= button_to "Back to Main Menu", :root, :method => "get", :class => "button" %>
+</div>
+<br>
+<hr>
+<h3>Turn History</h3>
+<% @history.each_with_index do |turns, idx| %>
+  <h4 class="turn-history">&nbsp;<%= "#{idx+1}. "%>
+    <div class="game-board minified">
+      <% [0, 3, 6].each do |i| %>
+        <div class="row">
+          <% (0..2).each do |j| %>
+            <div class="square board-<%= i+j %>">
+              <% turns.each do |turn| %>
+                <% if i+j == turn.board_index %>
+                  <div class="mark <%= turn.mark %>">
+                    <%= turn.mark %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </h4>
+<% end %> 

@@ -50,7 +50,7 @@ body {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  margin: 2em auto;
+  margin-bottom: 2em;
 }
 
 .row {
@@ -105,6 +105,14 @@ body {
   border-width: 2px 0 0 2px;
 }
 
+.minified {
+  transform: scale(0.2);
+  position: relative;
+  transform-origin: 50px -60px;
+  -moz-transform-origin: 50px -60px;
+  -webkit-transform-origin: 50px -60px;
+}
+
 .mark {
   font-size: 100px;
 }
@@ -123,4 +131,8 @@ body {
 
 .X.win {
   background-color: rgba(255, 0, 0, 0.2);
+}
+
+.turn-history {
+  height: 70px;
 }

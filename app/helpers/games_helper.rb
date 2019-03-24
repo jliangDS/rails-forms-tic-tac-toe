@@ -1,17 +1,20 @@
 module GamesHelper
   @@win_conditions = [
+    # Rows
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
+    # Columns
     [0, 3, 6],
     [1, 4, 7],
     [2, 5, 8],
+    # Diagonals
     [0, 4, 8],
     [2, 4, 6]
   ]
 
-  # Returns an array with 'X' or 'O' and winning combo if there is a winner
-  # or 'TIE' and an empty array if game ended with no winners
+  # Returns an array with winner ('X' or 'O') and winning combo string if there is a winner
+  # or 'TIE' and an empty string if game ended with no winners
   # or nil if game has not yet ended
   def check_for_win(game)
     return nil if game.turns.size < 5 
@@ -28,7 +31,7 @@ module GamesHelper
       end
     end
 
-    if game.turns.size == 9
+    if game.turns.size > 8
       return ["TIE",""]
     else
       return nil

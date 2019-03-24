@@ -7,6 +7,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @history = @game.get_turn_history
   end
 
   def new
@@ -16,7 +17,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.create(create_params)
 
-    # Randomize who starts
+    # Randomize who starts in single player
     if @game.is_single_player
       # AI start
       if [true,false].sample
@@ -46,10 +47,13 @@ class GamesController < ApplicationController
       do_move(@game, get_other_mark(player_mark))
     end
 
+    # Check for win
     result = check_for_win(@game)
+    # If game has ended, go to :show
     if result
       @game.update(victor: result[0], win: result[1])
       redirect_to game_path(@game)
+    # If no win, keep showing :edit
     else
       redirect_to game_play_path(@game)
     end

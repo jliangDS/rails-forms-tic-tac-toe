@@ -1,11 +1,9 @@
-<div class="center">
-  <h1 class="center">Played Games</h1>
-  <p>
-    <% @games.each do |game| %>
-      <%= link_to game.is_single_player ? "Game #{game.id} - vs AI" : "Game #{game.id} - vs Player", game %><br>
-    <% end %>
-  </p>
-  <p>
-    <%= button_to "Back to Main Menu", :root, :method => "get", :class => "button" %>
-  </p>
-</div>
+<h1>Played Games</h1>
+<ul>
+  <% @games.each do |game| %>
+    <li><%= link_to game.is_single_player ? "Game #{game.id} - vs AI" : "Game #{game.id} - vs Player", game %></  li>
+  <% end %>
+</ul>
+<p>
+  <%= button_to "Back to Main Menu", :root, :method => "get", :class => "button" %>
+</p>
