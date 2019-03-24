@@ -1,24 +1,15 @@
-# README
+# Rails Forms Tic-Tac-Toe
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Tic-Tac-Toe game powered by Rails forms. 
 
-Things you may want to cover:
+## Prerequisites
+Ruby and Bundler gem
 
-* Ruby version
+## Setup
+```sh
+bundle install
+rake db:migrate
+rails s 
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The app should be accessible through localhost:3000 in your browser.
