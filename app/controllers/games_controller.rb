@@ -8,7 +8,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.create(game_params(:is_single_player))
+    @game = Game.create
     redirect_to game_play_path(@game)
   end
   
@@ -18,13 +18,17 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update(game_params(:board))
+    @game.turns.build(
+      mark: @game.get_mark_for_turn,
+      board_index: game_params[:selected_board_index]
+    ).save
+
     redirect_to game_play_path(@game)
   end
 
   private
 
-  def game_params(*args)
-    params.require(:game).permit(*args)
+  def game_params
+    params.require(:game).permit(:selected_board_index)
   end
 end

@@ -1,17 +1,24 @@
 <div class="center game-board">
-  <% (0...9).each do |i| %>
-    <% if i % 3 == 0 %>
-      <div class="row">
-        <div class="square board-<%= i %>"><%= @game.board[i] %></div>
-        <div class="square board-<%= i+1 %>"><%= @game.board[i+1] %></div>
-        <div class="square board-<%= i+2 %>"><%= @game.board[i+2] %></div>
-      </div>
-    <% end %>
+  <% [0, 3, 6].each do |i| %>
+    <div class="row">
+      <% (0..2).each do |j| %>
+        <div class="square board-<%= i+j %>">
+          <% if !@game.board[i+j] %>
+            <%= form_for @game, url: update_game_play_path(@game) do |f| %>
+              <%= f.submit '', class: "board-button" %>
+              <%= f.hidden_field :selected_board_index, value: i+j %>
+            <% end %>
+          <% else %>
+            <div class="mark <%= @game.board[i+j] %>">
+              <%= @game.board[i+j] %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
-<div class="center">
-  <%= form_for(@game) do |f| %>
-    <%= f.submit 'Confirm Move', class: "button" %>
-  <% end %>
-</div>
+<h1 class="center">
+  <span class="<%= @game.get_mark_for_turn %>"><%= @game.get_mark_for_turn %></span>'s Turn
+</h1>

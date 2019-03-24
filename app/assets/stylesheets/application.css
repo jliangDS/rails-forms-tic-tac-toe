@@ -29,6 +29,20 @@ body {
   font-size: 1em;
 }
 
+.board-button {
+  width: 108px;
+  height: 109px;
+  display: inline;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.board-button:hover {
+  background-color: rgba(0,0,0,0.2);
+}
+
 .game-board {
   width: 333px;
   height: 333px;
@@ -89,4 +103,16 @@ body {
 
 .board-8 {
   border-width: 2px 0 0 2px;
+}
+
+.mark {
+  font-size: 100px;
+}
+
+.O {
+  color: blue;
+}
+
+.X {
+  color: red;
 }
