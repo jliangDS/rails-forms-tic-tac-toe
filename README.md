@@ -12,4 +12,4 @@ rake db:migrate
 rails s 
 ```
 
-The app should be accessible through localhost:3000 in your browser.
+The app should be accessible through `localhost:3000` in your browser.
