@@ -116,3 +116,11 @@ body {
 .X {
   color: red;
 }
+
+.O.win {
+  background-color: rgba(0, 68, 255, 0.2); 
+}
+
+.X.win {
+  background-color: rgba(255, 0, 0, 0.2);
+}

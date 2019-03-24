@@ -10,8 +10,8 @@ module GamesHelper
     [2, 4, 6]
   ]
 
-  # Returns 'X' or 'O' if there is a winner
-  # or 'TIE' if game ended with no winners
+  # Returns an array with 'X' or 'O' and winning combo if there is a winner
+  # or 'TIE' and an empty array if game ended with no winners
   # or nil if game has not yet ended
   def check_for_win(game)
     return nil if game.turns.size < 5 
@@ -22,14 +22,14 @@ module GamesHelper
     @@win_conditions.each do |win|
       # Check if xs or os contain indices combo that meet win condition
       if (win-xs).empty?
-        return "X"
+        return ["X", win.join(' ')]
       elsif (win-os).empty?
-        return "O"
+        return ["O",win.join(' ')]
       end
     end
 
     if game.turns.size == 9
-      return "TIE"
+      return ["TIE",""]
     else
       return nil
     end

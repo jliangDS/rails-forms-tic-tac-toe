@@ -48,7 +48,7 @@ class GamesController < ApplicationController
 
     result = check_for_win(@game)
     if result
-      @game.update(victor: result)
+      @game.update(victor: result[0], win: result[1])
       redirect_to game_path(@game)
     else
       redirect_to game_play_path(@game)

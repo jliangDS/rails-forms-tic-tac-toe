@@ -4,7 +4,7 @@
       <% (0..2).each do |j| %>
         <div class="square board-<%= i+j %>">
           <% if @game.board[i+j] %>
-            <div class="mark <%= @game.board[i+j] %>">
+            <div class="mark <%= @game.board[i+j] %> <%= "win" if @game.win.split(' ').include?((i+j).to_s) %>">
               <%= @game.board[i+j] %>
             </div>
           <% end %>
@@ -16,7 +16,11 @@
 
 <% if @game.victor %>
   <h1 class="center">
-    Winner: <span class="<%= @game.victor %>"><%= @game.victor %></span>
+    <% if @game.victor == "TIE" %>
+      <span class="<%= @game.victor %>"><%= @game.victor %></span>
+    <% else %>
+      Winner: <span class="<%= @game.victor %>"><%= @game.victor %></span>
+    <% end %>
   </h1>
 <% else %>
   <div class="center">
