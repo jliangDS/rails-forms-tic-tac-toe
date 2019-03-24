@@ -5,4 +5,7 @@
       <%= link_to game.is_single_player ? "Game #{game.id} - vs AI" : "Game #{game.id} - vs Player", game %><br>
     <% end %>
   </p>
+  <p>
+    <%= button_to "Back to Main Menu", :root, :method => "get", :class => "button" %>
+  </p>
 </div>

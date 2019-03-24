@@ -1,13 +1,27 @@
-<div class="center rules">
+<div class="center game-board">
+  <div class="row">
+    <div class="square board-0">T</div><div class="square board-1">I</div><div class="square board-2">C</div>
+  </div>
+  <div class="row"> 
+    <div class="square board-3">T</div><div class="square board-4">A</div><div class="square board-5">C</div>
+  </div>
+  <div class="row"> 
+    <div class="square board-6">T</div><div class="square board-7">O</div><div class="square board-8">E</div>
+  </div>
 </div>
-<br>
+
 <div class="center">
   <%= form_for(@game) do |f| %>
   <%= f.hidden_field :is_single_player, value: true %>
-    <%= f.submit 'One Player', class: "button" %>
+    <%= f.submit 'Single Player', class: "button" %>
   <% end %>
+  <br>
   <%= form_for(@game) do |f| %>
       <%= f.hidden_field :is_single_player, value: false %>
     <%= f.submit 'Two Players', class: "button" %>
   <% end %>
+  <br>
+    
+    <%= button_to "Back to Main Menu", :root, :method => "get", :class => "button" %>
+
 </div>
