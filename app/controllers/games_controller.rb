@@ -42,13 +42,17 @@ class GamesController < ApplicationController
       board_index: update_params[:selected_board_index]
     ).save
 
-    # AI move
-    if @game.is_single_player
-      do_move(@game, get_other_mark(player_mark))
+    # Check for win by player
+    result = check_for_win(@game)
+    if !result
+      # AI move
+      if @game.is_single_player
+        do_move(@game, get_other_mark(player_mark))
+      end
     end
 
-    # Check for win
-    result = check_for_win(@game)
+    # Check for win by AI
+    result ||= check_for_win(@game)
     # If game has ended, go to :show
     if result
       @game.update(victor: result[0], win: result[1])

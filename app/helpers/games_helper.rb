@@ -13,7 +13,7 @@ module GamesHelper
     [2, 4, 6]
   ]
 
-  # Returns an array with winner ('X' or 'O') and winning combo string if there is a winner
+  # Returns an array with 'X' or 'O' and string of winning combo if there is a winner
   # or 'TIE' and an empty string if game ended with no winners
   # or nil if game has not yet ended
   def check_for_win(game)
@@ -68,14 +68,23 @@ module GamesHelper
     if !i
       # Prioritize corners 
       if !game.board[0] || !game.board[2] || !game.board[6] || !game.board[8]
-        i = i = [0, 2, 6, 7].sample 
+        i = [0, 2, 6, 8].sample 
 
         while game.board[i]
-          i = [0, 2, 6, 7].sample 
+          i = [0, 2, 6, 8].sample 
         end
       # Else prioritize center
       elsif !game.board[4]
         i = 4
+      end
+    end
+
+    # If all else fails just pick a random open spot
+    if !i
+      i = [1, 3, 5, 7].sample
+
+      while game.board[i]
+        i = [1, 3, 5, 7].sample 
       end
     end
 
